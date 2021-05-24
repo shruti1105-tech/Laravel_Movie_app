@@ -35,11 +35,10 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Title</h3>
 
 
                     <div class="text-center">
-                        <a class='col-lg-offset-5 btn btn-success' href="{{route('cast.create')}}"> Add New post</a>
+                        <a class='col-lg-offset-5 btn btn-success' href="{{route('cast.create')}}"> Add New Cast</a>
                     </div>
 
                     <div class="card-tools">
@@ -63,6 +62,7 @@
                                 <tr>
                                     <th>Sr. No</th>
                                     <th>Name</th>
+                                    <th>Poster</th>
                                     <th>Bio</th>
                                     <th>Birth Date</th>
                                     <th>List of Movies</th>
@@ -77,6 +77,7 @@
                                     <tr>
                                         <td>{{$loop->index +1}}</td>
                                         <td>{{$cast->name}}</td>
+                                        <td><img src="{{$cast->cast_poster}}" alt="cast_poster" width="100px"/></td>
                                         <td>{{$cast->bio}}</td>
                                         <td>{{$cast->birth_date}}</td>
                                         <td>{{$cast->list_of_movies}}</td>
@@ -111,6 +112,7 @@
                                 <tr>
                                     <th>Sr. No</th>
                                     <th>Name</th>
+                                    <th>Poster</th>
                                     <th>Bio</th>
                                     <th>Birth Date</th>
                                     <th>List of Movies</th>

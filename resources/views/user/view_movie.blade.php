@@ -7,29 +7,20 @@
 @section('main-content')
 
     <!-- Main Content -->
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                @foreach($movies as $movie)
-                    <div class="movie-title">
-                        <a href="#">
-                            <h2 class="movie-title">
-                                {{ $movie->title }}
-                            </h2>
-                            <h4 class="movie-date">
-                                {{ $movie->	release_year }}
-                            </h4>
-                        </a>
-                        <a href="#"><img width="200" src="{{ $movie->poster }}"></a>
-
-                        <p class="post-meta">Posted by
-                            <a href="#">Movie World</a>
-                            {{ $movie->created_at->diffForHumans() }}
-                        </p>
+            @foreach($movies as $movie)
+                <div class="col-4">
+                    <div class="card" style="width: 20rem; height: 500px">
+                        <h4 class="card-title" style="text-align: center;font-family: 'Times New Roman';padding-top: 15px">{{$movie->title}}</h4>
+                        <hr>
+                        <a href="{{ route('movie.show',$movie->id) }}"> <img src="{{$movie->poster}}" class="card-img-top" alt="..." height="320px" width="250px"></a>
+                        <p class="card-text" style="padding: 5px">Released Year: {{$movie->release_year}}</p>
+                        <a class="btn btn-info" href="{{ route('movie.show',$movie->id) }}" style="font-size: 15px;padding: 5px">Movie Details</a>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
-    </div>
-    <hr>
+        <hr>
 @endsection

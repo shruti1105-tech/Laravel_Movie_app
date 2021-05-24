@@ -41,9 +41,10 @@
                     <ul class="treeview-menu">
                         <li class="active"><a href="{{route('movie.index')}}"><i class="fa fa-circle-o"></i>Movies</a>
                         </li>
-                        <li class="active"><a href="{{route('movie_detail.index')}}"><i class="fa fa-circle-o"></i>Movies Details</a>
-                        </li>
+{{--                        <li class="active"><a href="{{route('movie_detail.index')}}"><i class="fa fa-circle-o"></i>Movies Details</a>--}}
+{{--                        </li>--}}
                         <li><a href="{{route('cast.index')}}"><i class="fa fa-circle-o"></i> Casts</a></li>
+                        <li><a href="{{route('theater.index')}}"><i class="fa fa-circle-o"></i> Theater</a></li>
                     </ul>
                 </li>
             </ul>

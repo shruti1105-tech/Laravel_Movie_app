@@ -10,32 +10,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Movie</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('cast_show.index')}}">cast</a>
-                </li>
 
-                {{--                <li class="nav-item">--}}
-                {{--                    @if(Auth::guest())--}}
+                <li class="nav-item">
+                    @if(Auth::guest())
 
-                {{--                        <a class="nav-link" href="{{ route('login') }}">Login</a>--}}
-                {{--                    @else--}}
-                {{--                        <a href="{{ route('logout') }}"--}}
-                {{--                           onclick="event.preventDefault();--}}
-                {{--                                                     document.getElementById('logout-form').submit();">--}}
-                {{--                            Logout--}}
-                {{--                        </a>--}}
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                @else
 
-                {{--                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-                {{--                            {{ csrf_field() }}--}}
-                {{--                        </form>--}}
-                {{--                    @endif--}}
-                {{--                </li>--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('cast_show.index')}}">cast</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                    </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                    @endif
+                    </li>
             </ul>
         </div>
     </div>

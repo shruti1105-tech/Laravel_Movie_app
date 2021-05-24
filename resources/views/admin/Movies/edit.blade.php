@@ -38,7 +38,8 @@
                         @if (session()->has('message'))
                             <p class="alert-default-success">{{session('message')}}</p>
                         @endif
-                        <form role="form" action="{{route('movie.update',$movie->id)}}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{route('movie.update',$movie->id)}}" method="post"
+                              enctype="multipart/form-data">
 
                             {{csrf_field()}}
                             {{method_field('PATCH')}}
@@ -49,24 +50,44 @@
                                     <input type="text" class="form-control" id="title" name="title" placeholder="Title"
                                            value="{{$movie->title}}">
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="overview">Movie overview</label>
+                                    <input type="text" class="form-control" id="overview" name="overview"
+                                           placeholder="Sub Title"
+                                           value="{{$movie->overview}}">
+                                </div>
 
                                 <div class="form-group">
                                     <label for="year">Release Year</label>
-                                    <input type="text" class="form-control" id="release_year" name="release_year" placeholder="release year"
+                                    <input type="text" class="form-control" id="release_year" name="release_year"
+                                           placeholder="release year"
                                            value="{{$movie->release_year}}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="image">File input</label>
-                                    <input type="file"  name="poster" id="poster">
+                                    <label for="runtime">Runtime</label>
+                                    <input type="text" class="form-control" id="runtime" name="runtime"
+                                           placeholder="runtime"
+                                           value="{{$movie->runtime}}">
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="image">Movie Poster</label>
+                                    <input type="file" name="poster" value="{{ $movie->poster }}" id="poster">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cast">Cast</label>
+                                    <input type="text" class="form-control" id="cast" name="cast" placeholder="cast"
+                                           value="{{$movie->cast}}">
+                                </div>
+
 
                             </div>
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a type="button"  href="{{route('movie.index')}}" class="btn btn-warning">Back</a>
+                                <a type="button" href="{{route('movie.index')}}" class="btn btn-warning">Back</a>
                             </div>
                         </form>
                     </div>
@@ -84,7 +105,7 @@
 @section('footerSection')
     <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
     <script>
-        $(document).ready(function (){
+        $(document).ready(function () {
             $(".select2").select2();
         });
     </script>

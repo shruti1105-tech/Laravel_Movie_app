@@ -35,11 +35,9 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Title</h3>
-
 
                     <div class="text-center">
-                        <a class='col-lg-offset-5 btn btn-success' href="{{route('movie.create')}}"> Add New post</a>
+                        <a class='col-lg-offset-5 btn btn-success' href="{{route('movie.create')}}"> Add New Movie</a>
                     </div>
 
                     <div class="card-tools">
@@ -63,7 +61,11 @@
                                 <tr>
                                     <th>Sr. No</th>
                                     <th>Movie title</th>
+                                    <th>Movie Poster</th>
+                                    <th>Movie Overview</th>
                                     <th>Release Year</th>
+                                    <th>Runtime</th>
+                                    <th>Cast</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -74,7 +76,12 @@
                                     <tr>
                                         <td>{{$loop->index +1}}</td>
                                         <td>{{$film->title}}</td>
+                                        <th><img src="{{$film->poster}}" alt="poster" width="100px"/></th>
+                                        <td>{{$film->overview}}</td>
                                         <td>{{$film->release_year}}</td>
+                                        <td>{{$film->runtime}}</td>
+                                        <td>{{$film->cast}}</td>
+
                                         <td><a href="{{route('movie.edit',$film->id)}}"> Edit</td>
                                         {{--                                            <td><a href="{{route('movies.edit',$film->id)}}"> Update--}}
                                         {{--                                                    <i class="far fa-edit"></i></a></td>--}}
@@ -104,9 +111,13 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>S.No</th>
+                                    <th>Sr. No</th>
                                     <th>Movie title</th>
+                                    <th>Movie Poster</th>
+                                    <th>Movie Overview</th>
                                     <th>Release Year</th>
+                                    <th>Runtime</th>
+                                    <th>Cast</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>

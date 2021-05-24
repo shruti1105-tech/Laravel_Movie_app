@@ -38,12 +38,17 @@ class CastController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
+            'cast_poster' =>'required',
             'bio'=>'required',
             'birth_date'=>'required',
             'list_of_movies'=>'required',
         ]);
+        if($request->hasFile('cast_poster')){
+            $imageName ="/img/".$request->cast_poster->getClientOriginalName();
+        }
         $casts = new Cast();
         $casts->name= $request->name;
+        $casts->cast_poster= $imageName;
         $casts->bio = $request->bio;
         $casts->birth_date = $request->birth_date;
         $casts->list_of_movies= $request->list_of_movies;
@@ -88,12 +93,17 @@ class CastController extends Controller
     {
         $this->validate($request,[
             'name' => 'required',
+            'cast_poster' =>'required',
             'bio'=>'required',
             'birth_date'=>'required',
             'list_of_movies'=>'required',
         ]);
+        if($request->hasFile('cast_poster')){
+            $imageName ="/img/".$request->cast_poster->getClientOriginalName();
+        }
         $casts = Cast::find($id);
         $casts->name= $request->name;
+        $casts->cast_poster= $imageName;
         $casts->bio = $request->bio;
         $casts->birth_date = $request->birth_date;
         $casts->list_of_movies= $request->list_of_movies;

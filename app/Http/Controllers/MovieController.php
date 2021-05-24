@@ -14,8 +14,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies =Movie::all();
-        return view('admin/Movies/show',compact('movies'));
+        $movies = Movie::all();
+        return view('admin/Movies/show', compact('movies'));
     }
 
     /**
@@ -31,24 +31,30 @@ class MovieController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'title'  => 'required',
+        $this->validate($request, [
+            'title' => 'required',
+            'overview' => 'required',
             'release_year' => 'required',
-            'poster' =>'required',
+            'runtime' => 'required',
+            'poster' => 'required',
+            'cast' => 'required',
         ]);
-        if($request->hasFile('poster')){
-            $imageName ="/img/".$request->poster->getClientOriginalName();
+        if ($request->hasFile('poster')) {
+            $imageName = "/img/" . $request->poster->getClientOriginalName();
         }
 
-        $movie=new Movie;
+        $movie = new Movie;
         $movie->title = $request->title;
+        $movie->overview = $request->overview;
+        $movie->runtime = $request->runtime;
         $movie->release_year = $request->release_year;
-        $movie->poster= $imageName;
+        $movie->poster = $imageName;
+        $movie->cast = $request->cast;
         $movie->save();
 
         return redirect(route('movie.index'));
@@ -57,49 +63,56 @@ class MovieController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $movie = Movie::where('id', $id)->first();
+        return view('user.view_movie_detail', compact('movie'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $movie=Movie::where('id',$id)->first();
-        return view('admin/Movies/edit',compact('movie'));
+        $movie = Movie::where('id', $id)->first();
+        return view('admin/Movies/edit', compact('movie'));
         return redirect('admin/home');
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'title'  => 'required',
+            'overview' =>'required',
             'release_year' => 'required',
+            'runtime' =>'required',
             'poster' =>'required',
+            'cast' =>'required',
         ]);
-        if($request->hasFile('poster')){
-            $imageName ="/img/".$request->poster->getClientOriginalName();
+        if ($request->hasFile('poster')) {
+            $imageName = "/img/" . $request->poster->getClientOriginalName();
         }
 
-        $movie=Movie::find($id);
+        $movie = Movie::find($id);
         $movie->title = $request->title;
+        $movie->overview = $request->overview;
+        $movie->runtime = $request->runtime;
         $movie->release_year = $request->release_year;
         $movie->poster= $imageName;
+        $movie->cast = $request->cast;
         $movie->save();
 
         return redirect(route('movie.index'));
@@ -108,12 +121,12 @@ class MovieController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Movie::where('id',$id)->delete();
+        Movie::where('id', $id)->delete();
         return redirect()->back();
     }
 }

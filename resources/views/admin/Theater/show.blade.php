@@ -35,12 +35,10 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Title</h3>
-
 
                     <div class="text-center">
-                        <a class='col-lg-offset-5 btn btn-success' href="{{route('movie_detail.create')}}"> Add New
-                            post</a>
+                        <a class='col-lg-offset-5 btn btn-success' href="{{route('theater.create')}}"> Add New
+                            Theater</a>
                     </div>
 
                     <div class="card-tools">
@@ -63,34 +61,30 @@
                                 <thead>
                                 <tr>
                                     <th>Sr. No</th>
-                                    <th>Movie title</th>
-                                    <th>Movie Overview</th>
-                                    <th>Release Year</th>
-                                    <th>Runtime</th>
-                                    <th>Cast</th>
+                                    <th>Theater Name</th>
+                                    <th>City</th>
+                                    <th>Ratting</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
-                                @foreach($movie_details as $film)
+                                @foreach($theaters as $theater)
                                     <tr>
                                         <td>{{$loop->index +1}}</td>
-                                        <td>{{$film->title}}</td>
-                                        <td>{{$film->overview}}</td>
-                                        <td>{{$film->release_year}}</td>
-                                        <td>{{$film->runtime}}</td>
-                                        <td>{{$film->cast}}</td>
-                                        <td><a href="{{route('movie_detail.edit',$film->id)}}"> Edit</td>
+                                        <td>{{$theater->theatre_name}}</td>
+                                        <td>{{$theater->city_name}}</td>
+                                        <td>{{$theater->rate}}</td>
+                                        <td><a href="{{route('theater.edit',$theater->id)}}"> Edit</td>
                                         {{--                                            <td><a href="{{route('movies.edit',$film->id)}}"> Update--}}
                                         {{--                                                    <i class="far fa-edit"></i></a></td>--}}
 
 
                                         <td>
-                                            <form id="delete-form-{{$film->id}}"
+                                            <form id="delete-form-{{$theater->id}}"
                                                   method="post"
-                                                  action="{{route('movie_detail.destroy',$film->id)}}"
+                                                  action="{{route('theater.destroy',$theater->id)}}"
                                                   style="display: none">
                                                 {{csrf_field()}}
                                                 {{method_field('DELETE')}}
@@ -98,7 +92,7 @@
                                             <a href="" onclick="if(confirm('ARE YOU SURE ,YOU WANT TO DELETE THIS?'))
                                                 {
                                                 event.preventDefault();
-                                                document.getElementById('delete-form-{{$film->id}}').submit();
+                                                document.getElementById('delete-form-{{$theater->id}}').submit();
                                                 }else
                                                 {
                                                 event.preventDefault();
@@ -112,11 +106,9 @@
                                 <tfoot>
                                 <tr>
                                     <th>Sr. No</th>
-                                    <th>Movie title</th>
-                                    <th>Movie Overview</th>
-                                    <th>Release Year</th>
-                                    <th>Runtime</th>
-                                    <th>Cast</th>
+                                    <th>Theater Name</th>
+                                    <th>City</th>
+                                    <th>Ratting</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>

@@ -11,7 +11,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Create Cast
+                Create Movie
             </h1>
 
         </section>
@@ -37,35 +37,24 @@
                             <p class="alert-default-success">{{session('message')}}</p>
                         @endif
 
-                        <form role="form" action="{{route('cast.store')}}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{route('theater.store')}}" method="post" enctype="multipart/form-data">
 
                             {{csrf_field()}}
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="title">Theater Name</label>
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="image">Cast Poster</label>
-                                    <input type="file" name="cast_poster" id="cast_poster">
+                                    <label for="slug">City Name</label>
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="City">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="bio">Bio</label>
-                                    <input type="text" class="form-control" id="bio" name="bio" placeholder="bio">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="birth date">Birthdate</label>
-                                    <input type="date" class="form-control" id="birth_date" name="birth_date"
-                                           placeholder="birth date">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="list">List Of Movies</label>
-                                    <input type="text" class="form-control" id="list_of_movies" name="list_of_movies"
-                                           placeholder="list of movies">
+                                    <label for="slug">Ratting</label>
+                                    <input type="number" class="form-control" id="ratting" name="ratting"
+                                           placeholder="Ratting">
                                 </div>
 
                             </div>
@@ -73,7 +62,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a type="button" href="{{route('cast.index')}}" class="btn btn-warning">Back</a>
+                                <a type="button" href="{{route('theater.index')}}" class="btn btn-warning">Back</a>
                             </div>
                         </form>
                     </div>

@@ -16,6 +16,7 @@ class CreateCastsTable extends Migration
         Schema::create('casts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('cast_poster');
             $table->string('bio');
             $table->string('birth_date');
             $table->string('list_of_movies');

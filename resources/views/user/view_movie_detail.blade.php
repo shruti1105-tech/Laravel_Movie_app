@@ -1,32 +1,39 @@
 @extends('user/app')
 
-{{--@section('bg-img',Storage::disk('local')->url($post->image))--}}
-
-{{--@section('title',$post->title)--}}
-
-{{--@section('sub-heading',$post->subtitle)--}}
-
+@section('bg-img',asset('user/img/about-bg.jpg'))
+@section('title','Movie World')
 
 @section('main-content')
+    <a href="/home" class="btn btn-primary" style="float: right;margin-right: 100px;border-radius: 5px;padding: 12px">Back</a>
+    <div class="movie-info border-b border-gray-800 bg-gray-400 mt-10">
+        <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
+            <div class="flex-none">
+                <img src="{{$movie ->poster}}" alt="poster" class="w-64 lg:w-96">
+            </div>
+            <div class="md:ml-24">
+                <h2 class="text-4xl mt-4 md:mt-0 font-semibold">{{ $movie->title }}</h2>
+                <div class="flex flex-wrap items-center text-black text-sm mt-5">
 
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0&appId=271757984481444&autoLogAppEvents=1" nonce="CUYRc1kP"></script>
-    <!-- Post Content -->
-    <article>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    @foreach($movies as $movie)
-                        <h2 class="movie-title">
-                            {{ $movie->title }}
-                        </h2>
-                    @endforeach
+                    <p>Realese Year:- <span>{{ $movie->release_year }}</span>
+                        <span class="mx-2">|</span>
+                        <span>{{ $movie->runtime }}</span></p>
                 </div>
-                <div class="fb-comments" data-href="{{ Request::url() }}" data-numposts="10"></div>
+
+                <p class="text-gray-800 mt-8">
+                    Overview:- {{ $movie->overview }}
+                </p>
+
+                <div class="mt-5">
+                    <h5 class="text-black font-semibold">Cast Member</h5>
+                    <div class="flex mt-2">
+
+                        <div class="mr-8">
+                            <div>{{ $movie->cast }}</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/theater_show" class="btn btn-primary" style="float: right;margin-right: 100px;border-radius: 5px;padding: 12px">Booking</a>
             </div>
         </div>
-    </article>
-
-    <hr>
-
+    </div>
 @endsection

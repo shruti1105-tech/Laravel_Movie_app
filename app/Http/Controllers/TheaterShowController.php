@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MovieDetails;
+use App\Models\Theater;
 use Illuminate\Http\Request;
 
-class MovieShowController extends Controller
+class TheaterShowController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class MovieShowController extends Controller
      */
     public function index()
     {
-        $movies=MovieDetails::all();
-        return view('user/view_movie_detail',compact('movies'));
+        $theaters=Theater::all();
+        return view('user/view_theater',compact('theaters'));
     }
 
     /**

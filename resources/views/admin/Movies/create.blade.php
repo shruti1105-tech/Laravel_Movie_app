@@ -47,14 +47,31 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="subtitle">Movie overview</label>
+                                    <input type="text" class="form-control" id="overview" name="overview"
+                                           placeholder="Overview">
+                                </div>
+
+                                <div class="form-group">
                                     <label for="slug">Release Year</label>
                                     <input type="number" class="form-control" id="year" name="release_year"
                                            placeholder="Release Year">
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="slug">Runtime</label>
+                                    <input type="text" class="form-control" id="runtime" name="runtime"
+                                           placeholder="runtime">
+                                </div>
+
+                                <div class="form-group">
                                     <label for="image">Movie Poster</label>
                                     <input type="file" name="poster" id="poster">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cast">Movie Casts</label>
+                                    <input type="text" class="form-control" id="cast" name="cast" placeholder="cast">
                                 </div>
 
                             </div>

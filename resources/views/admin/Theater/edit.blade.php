@@ -12,7 +12,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Edit Movie Detail
+                Edit Movie
             </h1>
 
         </section>
@@ -38,7 +38,7 @@
                         @if (session()->has('message'))
                             <p class="alert-default-success">{{session('message')}}</p>
                         @endif
-                        <form role="form" action="{{route('movie_detail.update',$movie->id)}}" method="post"
+                        <form role="form" action="{{route('theater.update',$theater->id)}}" method="post"
                               enctype="multipart/form-data">
 
                             {{csrf_field()}}
@@ -46,48 +46,30 @@
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="title">Post Title</label>
-                                    <input type="text" class="form-control" id="title" name="title" placeholder="Title"
-                                           value="{{$movie->title}}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="overview">Movie overview</label>
-                                    <input type="text" class="form-control" id="overview" name="overview"
-                                           placeholder="Sub Title"
-                                           value="{{$movie->overview}}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="year">Release Year</label>
-                                    <input type="text" class="form-control" id="release_year" name="release_year"
-                                           placeholder="release year"
-                                           value="{{$movie->release_year}}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="image">File input</label>
-                                    <input type="file" name="poster" id="poster">
+                                    <label for="title">Theater Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                                           value="{{$theater->theatre_name}}">
                                 </div>
 
 
                                 <div class="form-group">
-                                    <label for="runtime">Runtime</label>
-                                    <input type="text" class="form-control" id="runtime" name="runtime"
-                                           placeholder="runtime"
-                                           value="{{$movie->runtime}}">
+                                    <label for="year">City Name</label>
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="City"
+                                           value="{{$theater->city_name}}">
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="cast">Cast</label>
-                                    <input type="text" class="form-control" id="cast" name="cast" placeholder="cast"
-                                           value="{{$movie->cast}}">
+                                    <label for="slug">Ratting</label>
+                                    <input type="number" class="form-control" id="ratting" name="ratting"
+                                           placeholder="Ratting"
+                                           value="{{$theater->rate}}">
                                 </div>
 
                             </div>
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a type="button" href="{{route('movie_detail.index')}}" class="btn btn-warning">Back</a>
+                                <a type="button" href="{{route('theater.index')}}" class="btn btn-warning">Back</a>
                             </div>
                         </form>
                     </div>

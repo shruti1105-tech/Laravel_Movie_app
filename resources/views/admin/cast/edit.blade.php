@@ -52,6 +52,11 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="image">Cast Poster</label>
+                                    <input type="file"  name="cast_poster" value="{{ $cast->cast_poster }}" id="poster">
+                                </div>
+
+                                <div class="form-group">
                                     <label for="bio">Bio</label>
                                     <input type="text" class="form-control" id="bio" name="bio" placeholder="bio"
                                            value="{{$cast->bio}}">
